@@ -3,7 +3,7 @@ End of term project, Goldsmiths.
 Referencing Daniel Rozin's mechanical mirror
 
 ![GitHub Logo](/images/mech_mirrors.png)
-
+https://makezine.com/2015/12/29/mirror-made-hundred-pompoms/
 
 ## Idea
 Infinite mirror with an array of spheres containing addressable LEDs.
