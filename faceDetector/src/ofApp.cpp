@@ -33,4 +33,13 @@ void ofApp::draw(){
         cur = finder.blobs[i].boundingRect;     // and put a rectangle around the face
         ofDrawRectangle(cur);
     }
+    
+    ofSetHexColor(0xffffff); // reports framerate
+    stringstream reportStr;
+    reportStr  << " fps: " << ofGetFrameRate() << endl;
+
+    ofDrawBitmapString(reportStr.str(), 20, ofGetHeight()-50);
+
+
+    
 }
