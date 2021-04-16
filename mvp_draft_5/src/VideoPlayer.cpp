@@ -61,30 +61,59 @@ void VideoPlayer::update(){
 void VideoPlayer::draw(){
     
     // draw the incoming, the grayscale, the bg and the thresholded difference
-    ofSetHexColor(0xffffff);
-
-    grayDiff.draw(360,280);
+   
     
-  
+    dotMatrix(); // draws the dot grid
    
 }
 
 //--------------------------------------------------------------
 void VideoPlayer::keyPressed(int key){
     
-    switch (key){
-        case ' ':
-            bLearnBakground = true;
-            break;
-        case '+':
-            threshold ++;
-            if (threshold > 255) threshold = 255;
-            break;
-        case '-':
-            threshold --;
-            if (threshold < 0) threshold = 0;
-            break;
-    }
+  
 }
 
+//--------------------------------------------------------------
+void VideoPlayer::dotMatrix(){
+    
+    // Matrix setup
+    
+    //resolution = ofMap(facesDetected, 0, 2, 300, 300,true);
+    resolution = 200;
+    spacing = ofGetWidth()/resolution;
+    startPos = spacing/2;
+    maxSize = spacing/2;
+    
+    
+    ofSetColor( 255 );    //Set color for images drawing
+    
+    // Put grey mask into pixel array here
+    // and get video w + h
+    ofPixels & pixels = grayDiff.getPixels();
+    int vidWidth = pixels.getWidth();
+    int vidHeight = pixels.getHeight();
+    
+    
+    // Dot Matrix for loop here
+    ofPushMatrix();
+    ofScale(3);
+    for (int i = 0; i < vidWidth; i+=spacing){
+        for (int j = 0; j < vidHeight; j+=spacing){
+            
+            int cWidth = (ofGetWidth()/2);
+            int cHeight = (ofGetHeight()/2);
+            int locX = (i+spacing);
+            int locY = j+spacing;
+            ofColor c = pixels.getColor(i, j);
+            
+            int brightness = c.getBrightness();
+            float radius = ofMap(brightness, 0, 255, 0, maxSize);
+            ofFill();
+            ofDrawCircle(locX,locY,radius);
+        }
+    }
+    ofPopMatrix();
+    
+    
+}
 //--------------------------------------------------------------

@@ -13,6 +13,7 @@ public:
     VideoPlayer();
     void update();
     void draw();
+    void dotMatrix();
     
     void keyPressed(int key);
    
@@ -30,6 +31,14 @@ public:
     
     int                 threshold;
     bool                bLearnBakground;
+    
+    // Pixel grid
+    int spacing;
+    int startPos;
+    int maxSize;
+    
+    int facesDetected;
+    int resolution;
     
     
 };
