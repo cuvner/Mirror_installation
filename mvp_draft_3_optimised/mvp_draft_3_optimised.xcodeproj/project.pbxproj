@@ -2787,9 +2787,9 @@
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				D72634EFAB162235913ADF19 /* VideoPlayer.cpp */,
 				61A4CDD010E648929F4A473B /* VideoPlayer.hpp */,
-				10F0B97F59250BA61464B3F2 /* FaceDetector.h */,
 				5FBAE2B201058AF302DBE5BA /* GlitchLoop.cpp */,
 				3F98A7DC36EC18A7089BB80E /* GlitchLoop.h */,
+				10F0B97F59250BA61464B3F2 /* FaceDetector.h */,
 				AE4A9611F68BA39700350E2D /* FaceDetector.cpp */,
 			);
 			path = src;

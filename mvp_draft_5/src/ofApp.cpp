@@ -8,11 +8,13 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     videoPlayer.update();
+    faceDetection.update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     videoPlayer.draw();
+    faceDetection.draw();
     // finally, a report:
     ofSetHexColor(0xffffff);
     stringstream reportStr;

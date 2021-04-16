@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "VideoPlayer.hpp"
+#include "FaceDetection.hpp"
 
 class ofApp : public ofBaseApp{
 
@@ -13,5 +14,6 @@ class ofApp : public ofBaseApp{
 		void keyPressed(int key);
 
     VideoPlayer videoPlayer;
+    FaceDetection faceDetection;
 		
 };
