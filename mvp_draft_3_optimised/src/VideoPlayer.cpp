@@ -24,8 +24,8 @@ VideoPlayer::VideoPlayer(){
 void VideoPlayer::setup(){
     
     // video file names
-    leave = "mime_10.mp4";
-    attract = "mime_1.mp4";
+    leave = "02.mp4";
+    attract = "01.mp4";
     
     
     // vidPlayer setup

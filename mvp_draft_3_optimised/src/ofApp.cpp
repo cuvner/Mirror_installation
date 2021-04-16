@@ -47,7 +47,8 @@ void ofApp::draw(){
     
     // Get attention when there is either no faces or a face detected at distance
     if (counter%interval == 0 && faceDetector.proximity <= 4 && !videoPlayer.vidPlayer.isPlaying()){
-        videoPlayer.video = "mime_" + videoPlayer.greet[(int)ofRandom(4)] + ".mp4"; // file name array
+       // videoPlayer.video = "mime_" + videoPlayer.greet[(int)ofRandom(4)] + ".mp4"; // file name array
+         videoPlayer.video = "01.mp4"
         videoPlayer.setup();
     }
     cout<<videoPlayer.video<<endl; // video player debug aray
