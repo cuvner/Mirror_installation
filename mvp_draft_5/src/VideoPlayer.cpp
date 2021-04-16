@@ -11,11 +11,34 @@
 //--------------------------------------------------------------
  VideoPlayer::VideoPlayer(){
     
+//
+//    vidPlayer.load(video);
+//    vidPlayer.play();
+//    vidPlayer.setLoopState(OF_LOOP_NORMAL);
+//
+//
+//    colorImg.allocate(320,240);
+//    grayImage.allocate(320,240);
+//    grayBg.allocate(320,240);
+//    grayDiff.allocate(320,240);
+//
+//    bLearnBakground = true;
+//    threshold = 100;
+//
+//     // video file names
+//     leave = "02.mp4";
+//     attract = "01.mp4";
+//
+//     vWidth = vidPlayer.getWidth();
+//     vHeight = vidPlayer.getHeight();
+}
 
-    vidPlayer.load("01.mp4");
+//--------------------------------------------------------------
+void VideoPlayer::setup(){
+    vidPlayer.load(video);
     vidPlayer.play();
-    vidPlayer.setLoopState(OF_LOOP_NORMAL);
-
+    vidPlayer.setLoopState(OF_LOOP_NONE);
+    
     
     colorImg.allocate(320,240);
     grayImage.allocate(320,240);
@@ -24,11 +47,17 @@
     
     bLearnBakground = true;
     threshold = 100;
+    
+    // video file names
+    leave = "02.mp4";
+    attract = "01.mp4";
+    
+    vWidth = vidPlayer.getWidth();
+    vHeight = vidPlayer.getHeight();
+    
 }
-
 //--------------------------------------------------------------
 void VideoPlayer::update(){
-    ofBackground(100,100,100);
     
     bool bNewFrame = false;
     

@@ -7,13 +7,25 @@
 class ofApp : public ofBaseApp{
 
 	public:
-		void setup();
-		void update();
-		void draw();
-
-		void keyPressed(int key);
-
+    void setup();
+    void update();
+    void draw();
+    void installationSetup();
+    void installationRun();
+    void matrixResolution();
+    void mousePressed(int x, int y, int button);// setup screen
+    // void timer();
+    
+   // ofImage img;
+   // ofVideoGrabber videoGrabber;
+    ofxCvHaarFinder finder;
+    ofRectangle cur;
+    FaceDetection faceDetector;
     VideoPlayer videoPlayer;
-    FaceDetection faceDetection;
+    
+    
+    bool debug;
+    float millis;
+    int counter;
 		
 };

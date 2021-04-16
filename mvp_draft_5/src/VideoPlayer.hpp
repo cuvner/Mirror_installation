@@ -11,6 +11,7 @@ class VideoPlayer : public ofBaseApp{
     
 public:
     VideoPlayer();
+    void setup();
     void update();
     void draw();
     void dotMatrix();
@@ -40,5 +41,14 @@ public:
     int facesDetected;
     int resolution;
     
+    int vWidth;
+    int vHeight;
     
+    // video name strings
+    string video;
+    string leave;
+    string attract;
+    
+    // video file array - attract
+    string greet[4] = {"0", "1", "2", "3"};
 };
