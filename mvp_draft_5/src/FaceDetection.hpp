@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxCvHaarFinder.h"
+#include "ofxOpenCv.h"
 
 class FaceDetection {
 public:
@@ -17,6 +18,9 @@ public:
     ofxCvHaarFinder finder;
     ofRectangle cur;
     
+    ofxCvColorImage colorImg;
+    ofxCvGrayscaleImage init;
+    ofxCvGrayscaleImage reSize;
     
     
     float millis;

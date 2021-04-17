@@ -36,7 +36,7 @@
 //--------------------------------------------------------------
 void VideoPlayer::setup(){
     vidPlayer.load(video);
-    vidPlayer.play();
+    //vidPlayer.play();
     vidPlayer.setLoopState(OF_LOOP_NONE);
     
     
@@ -62,6 +62,9 @@ void VideoPlayer::update(){
     bool bNewFrame = false;
     
 
+    
+    
+    
     vidPlayer.update();
     bNewFrame = vidPlayer.isFrameNew();
     
