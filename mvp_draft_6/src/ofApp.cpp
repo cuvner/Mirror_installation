@@ -15,9 +15,9 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    faceDetector.update();
+    //faceDetector.update();
     videoPlayer.update();
-    vid.update();
+
     
     
 }
@@ -29,7 +29,6 @@ void ofApp::draw(){
     if (debug){ // debug mode for setting up installation,
 
         installationSetup();
-        vid.draw(500,0);
     } else {
         installationRun();
 
@@ -76,6 +75,9 @@ void ofApp::matrixResolution(){
 //Attract/dismiss a participent-----------------------------------
 void ofApp::attention(){
     // Get attention when there is either no faces or a face detected at distance
+    
+   
+    
     if (counter%interval == 0 && faceDetector.proximity <= 4 && !videoPlayer.vidPlayer.isPlaying()){
         videoPlayer.video = videoPlayer.greet[(int)ofRandom(1)] + ".mp4"; // file name array
         videoPlayer.video = "01.mp4";
@@ -125,5 +127,7 @@ void ofApp::mousePressed(int x, int y, int button){
 }
 void ofApp::keyPressed(int key){
     
-   // if (key == 'r')
+    if (key == 'r') {   videoPlayer.video = "02.mp4";
+        videoPlayer.setup();
+    }
 }

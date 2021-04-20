@@ -27,7 +27,7 @@ class ofApp : public ofBaseApp{
     FaceDetection faceDetector;
     VideoPlayer videoPlayer;
     
-    ofVideoPlayer vid;
+    
     
     
     bool debug;
