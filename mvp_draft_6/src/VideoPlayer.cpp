@@ -40,10 +40,10 @@ void VideoPlayer::setup(){
     vidPlayer.setLoopState(OF_LOOP_NONE);
     
     
-    colorImg.allocate(320,240);
-    grayImage.allocate(320,240);
-    grayBg.allocate(320,240);
-    grayDiff.allocate(320,240);
+//    colorImg.allocate(320,240);
+//    grayImage.allocate(320,240);
+//    grayBg.allocate(320,240);
+//    grayDiff.allocate(320,240);
     
     bLearnBakground = true;
     threshold = 100;
