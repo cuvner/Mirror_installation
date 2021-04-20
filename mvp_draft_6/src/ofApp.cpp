@@ -127,7 +127,10 @@ void ofApp::mousePressed(int x, int y, int button){
 void ofApp::keyPressed(int key){
     
     if (key == 'r'){
-    videoPlayer.video = "02.mp4";
-    videoPlayer.setup();
+        ofFill();
+        ofSetColor(0, 255, 0);
+        ofDrawCircle(400, 400, 300);
+//    videoPlayer.video = "02.mp4";
+//    videoPlayer.setup();
     }
 }
