@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     if (ofGetElapsedTimeMillis()<3000) videoPlayer.video = videoPlayer.attract;
- 
+    ofSetFrameRate(30);
     videoPlayer.setup();
     faceDetector.setup();
     
@@ -61,7 +61,7 @@ void ofApp::draw(){
     ofSetHexColor(0xffffff); // reports framerate
     stringstream reportStr;
     reportStr  << " fps: " << ofGetFrameRate() << endl
-    << " faces detected: " << faceDetector.nFacesDetected << endl
+    << " faces detected: " << faceDetector.nFacesPresent << endl
     << " resolution: " << videoPlayer.resolution << endl
     << " face size: " << faceDetector.proximity << endl;
     ofDrawBitmapString(reportStr.str(), 20, ofGetHeight()-50);
@@ -101,7 +101,7 @@ void ofApp::draw(){
     
 //Change resolution depending on faces detected ----------------
 void ofApp::matrixResolution(){
-    videoPlayer.facesDetected = faceDetector.nFacesDetected;
+    videoPlayer.facesDetected = faceDetector.nFacesPresent;
 }
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){

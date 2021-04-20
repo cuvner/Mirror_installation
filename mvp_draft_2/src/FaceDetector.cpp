@@ -11,23 +11,63 @@ void FaceDetector::setup(){
    
 	finder.setup("haarcascade_frontalface_default.xml");
 
+//    videoGrabber.setDeviceID(0);
+//    videoGrabber.setDesiredFrameRate(30);
+//    videoGrabber.initGrabber(320, 240);
+//    bool faceDet = false;
+    
+    finder.setup("haarcascade_frontalface_default.xml");
     videoGrabber.setDeviceID(0);
     videoGrabber.setDesiredFrameRate(30);
     videoGrabber.initGrabber(320, 240);
+    videoGrabber.setUseTexture(false);  // then you won't see the video
+    finder.setScaleHaar(1.1);
     bool faceDet = false;
+    init.allocate(320, 240);
+    reSize.allocate(160, 120);
 }
 
 //--------------------------------------------------------------
 void FaceDetector::update(){
-    nFacesDetected = finder.blobs.size();
-    finder.setScaleHaar(1.1);
+//    nFacesDetected = finder.blobs.size();
+//    finder.setScaleHaar(1.1);
+//    videoGrabber.update();
+//
+//    if(videoGrabber.isFrameNew()){
+//        finder.blobs.clear();
+//       
+//        finder.findHaarObjects(img);
+//        img.setFromPixels(videoGrabber.getPixels());
+//    }
+    
+    
+    
+    
     videoGrabber.update();
-
+    
     if(videoGrabber.isFrameNew()){
-        finder.blobs.clear();
-       
+        colorImg.setFromPixels(videoGrabber.getPixels());
+        init = colorImg;
+        
+        ofPoint src[4];
+        src[0] = ofPoint(0, 0);
+        src[1] = ofPoint(320, 0);
+        src[2] = ofPoint(320, 240);
+        src[3] = ofPoint(0, 240);
+        
+        ofPoint dst[4];
+        dst[0] = ofPoint(0, 0);
+        dst[1] = ofPoint(160, 0);
+        dst[2] = ofPoint(160, 120);
+        dst[3] = ofPoint(0, 120);
+        
+        reSize.warpIntoMe(init, src, dst);
+        
+        
+        
+        img.setFromPixels(reSize.getPixels());
         finder.findHaarObjects(img);
-        img.setFromPixels(videoGrabber.getPixels());
+        nFacesPresent = finder.blobs.size();
     }
 }
 
@@ -99,7 +139,7 @@ void FaceDetector::installation(){
 void FaceDetector::facesDetected(){
    
     if (counter%60==0){
-        nFacesDetected = finder.blobs.size();
+        nFacesPresent = finder.blobs.size();
     }
     counter++;
 }

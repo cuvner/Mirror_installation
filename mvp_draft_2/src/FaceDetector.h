@@ -18,11 +18,14 @@ class FaceDetector {
 		ofxCvHaarFinder finder;
         ofRectangle cur;
     
+    ofxCvColorImage colorImg;
+    ofxCvGrayscaleImage init;
+    ofxCvGrayscaleImage reSize;
    
     
     float millis;
     bool faceDet;
     int proximity;
-    int nFacesDetected;
+    int nFacesPresent;
     int counter;
 };
