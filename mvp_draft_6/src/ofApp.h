@@ -34,5 +34,6 @@ class ofApp : public ofBaseApp{
     float millis;
     int counter;
     int interval;
+    int modulo;
 		
 };

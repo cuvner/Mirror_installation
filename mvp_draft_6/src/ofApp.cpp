@@ -2,11 +2,11 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    //ofBackground(0);
+    ofBackground(0);
     if (ofGetElapsedTimeMillis()<3000) videoPlayer.video = videoPlayer.attract;
     ofSetFrameRate(30);
-//    videoPlayer.video = "02.mp4";
-//    videoPlayer.setup();
+    videoPlayer.video = "01.mp4";
+    videoPlayer.setup();
 
    
     debug = true;
@@ -74,24 +74,27 @@ void ofApp::matrixResolution(){
 
 //Attract/dismiss a participent-----------------------------------
 void ofApp::attention(){
+   
     // Get attention when there is either no faces or a face detected at distance
     
-   
     
-    if (counter%interval == 0 && faceDetector.proximity <= 4 && !videoPlayer.vidPlayer.isPlaying()){
-        videoPlayer.video = videoPlayer.greet[(int)ofRandom(1)] + ".mp4"; // file name array
+    
+    if (counter%interval == 0 && faceDetector.proximity < 5 && videoPlayer.vidPlayer.getIsMovieDone() ){
+        modulo ++;
         videoPlayer.video = "01.mp4";
         videoPlayer.setup();
-       
+        
+        
     }
     // cout<<videoPlayer.video<<endl; // video player debug aray
     
     // If face gets to close then shoo away
-    if (counter%100 == 50 && faceDetector.proximity > 5 && !videoPlayer.vidPlayer.isPlaying()) {
+    if (counter%80 == 50 && faceDetector.proximity > 5 && videoPlayer.vidPlayer.getIsMovieDone()) {
+        
         videoPlayer.video = videoPlayer.leave;
         videoPlayer.video = "02.mp4";
         videoPlayer.setup();
-       
+        
     }
 }
 
@@ -100,8 +103,8 @@ void ofApp::attention(){
 void ofApp::playBackInterval(){
     
     if (faceDetector.faceDet){ // set the interval for playback depending on face detection
-            interval = 300;
-    } else  interval = 900;
+            interval = 200;
+    } else  interval = 500;
     
 }
 

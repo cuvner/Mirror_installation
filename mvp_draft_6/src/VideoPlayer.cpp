@@ -1,8 +1,6 @@
 //
 //  VideoPlayer.cpp
-//  emptyExample
-//
-//  Created by Chris  on 16/04/2021.
+//  Used OFX video player example for reference
 //
 
 #include "VideoPlayer.hpp"
@@ -11,26 +9,6 @@
 //--------------------------------------------------------------
  VideoPlayer::VideoPlayer(){
     
-//
-//    vidPlayer.load(video);
-//    vidPlayer.play();
-//    vidPlayer.setLoopState(OF_LOOP_NORMAL);
-//
-//
-//    colorImg.allocate(320,240);
-//    grayImage.allocate(320,240);
-//    grayBg.allocate(320,240);
-//    grayDiff.allocate(320,240);
-//
-//    bLearnBakground = true;
-//    threshold = 100;
-//
-//     // video file names
-//     leave = "02.mp4";
-//     attract = "01.mp4";
-//
-//     vWidth = vidPlayer.getWidth();
-//     vHeight = vidPlayer.getHeight();
 }
 
 //--------------------------------------------------------------
@@ -39,18 +17,14 @@ void VideoPlayer::setup(){
     ofSetFrameRate(60);
     vidPlayer.load(video);
 
+    // set up video player
     vWidth = vidPlayer.getWidth();
     vHeight = vidPlayer.getHeight();
     vidPlayer.play();
     vidPlayer.setLoopState(OF_LOOP_NONE);
-    // Load black image for bckd diff
+
  
-    
-    
-//    colorImg.allocate(320,240);
-//    grayImage.allocate(320,240);
-//    grayBg.allocate(320,240);
-//    grayDiff.allocate(320,240);
+
     
     bLearnBakground = true;
     threshold = 100;
@@ -58,19 +32,12 @@ void VideoPlayer::setup(){
     // video file names
     leave = "02.mp4";
     attract = "01.mp4";
-    
-    vWidth = vidPlayer.getWidth();
-    vHeight = vidPlayer.getHeight();
-    
+
 }
 //--------------------------------------------------------------
 void VideoPlayer::update(){
     
-    bool bNewFrame = false;
-    
-
-    
-    
+    bool bNewFrame = false; // check to see if frame is new
     
     vidPlayer.update();
     bNewFrame = vidPlayer.isFrameNew();
@@ -78,12 +45,14 @@ void VideoPlayer::update(){
     if (bNewFrame){
         
 
-        colorImg.setFromPixels(vidPlayer.getPixels());
+        colorImg.setFromPixels(vidPlayer.getPixels()); // sets first frame as background to calculate
+                                                       // the background differencing
 
         
         grayImage = colorImg;
         if (bLearnBakground == true){
-            grayBg = grayImage;        // the = sign copys the pixels from grayImage into grayBg (operator overloading)
+            grayBg = grayImage; // the = sign copys the pixels from grayImage
+                                //into grayBg (operator overloading)
             bLearnBakground = false;
         }
         
@@ -98,18 +67,9 @@ void VideoPlayer::update(){
 
 //--------------------------------------------------------------
 void VideoPlayer::draw(){
-    
-    // draw the incoming, the grayscale, the bg and the thresholded difference
-   
-    
+
     dotMatrix(); // draws the dot grid
    
-}
-
-//--------------------------------------------------------------
-void VideoPlayer::keyPressed(int key){
-    
-  
 }
 
 //--------------------------------------------------------------
@@ -117,8 +77,7 @@ void VideoPlayer::dotMatrix(){
     
     // Matrix setup
     
-    //resolution = ofMap(facesDetected, 0, 2, 300, 300,true);
-    resolution = 200;
+    resolution = ofMap(nFacesPresent, 0, 2, 400, 100,true);
     spacing = ofGetWidth()/resolution;
     startPos = spacing/2;
     maxSize = spacing/2;
@@ -135,7 +94,7 @@ void VideoPlayer::dotMatrix(){
     
     // Dot Matrix for loop here
     ofPushMatrix();
-    ofScale(3);
+    ofScale(4);
     for (int i = 0; i < vidWidth; i+=spacing){
         for (int j = 0; j < vidHeight; j+=spacing){
             

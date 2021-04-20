@@ -14,15 +14,14 @@ public:
     void setup();
     void update();
     void draw();
-    void dotMatrix();
-    
-    void keyPressed(int key);
+    void dotMatrix(); // function to create the dot matrix from video file
+
    
 
     ofVideoPlayer         vidPlayer;
 
     
-    ofxCvColorImage            colorImg;
+    ofxCvColorImage        colorImg;
     
     ofxCvGrayscaleImage     grayImage;
     ofxCvGrayscaleImage     grayBg;
@@ -30,14 +29,16 @@ public:
     
     ofxCvContourFinder     contourFinder;
     
-    int                 threshold;
-    bool                bLearnBakground;
+    // setup for background differencing
+    int  threshold; // sets differencing threshold
+    bool bLearnBakground; // saves first frame and sets background for differencing
     
     // Pixel grid
     int spacing;
     int startPos;
     int maxSize;
     
+    // Store variables for 
     int nFacesPresent; // store the value of no. of faces present at installation
     int resolution;
     

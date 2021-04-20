@@ -42,22 +42,22 @@ void FaceDetection::update(){
         colorImg.setFromPixels(videoGrabber.getPixels());
         init = colorImg;
 
-        ofPoint src[4];
-        src[0] = ofPoint(0, 0);
-        src[1] = ofPoint(320, 0);
-        src[2] = ofPoint(320, 240);
-        src[3] = ofPoint(0, 240);
-
-        ofPoint dst[4];
-        dst[0] = ofPoint(0, 0);
-        dst[1] = ofPoint(160, 0);
-        dst[2] = ofPoint(160, 120);
-        dst[3] = ofPoint(0, 120);
-
-        reSize.warpIntoMe(init, src, dst);
-
-
-
+//        ofPoint src[4];
+//        src[0] = ofPoint(0, 0);
+//        src[1] = ofPoint(320, 0);
+//        src[2] = ofPoint(320, 240);
+//        src[3] = ofPoint(0, 240);
+//
+//        ofPoint dst[4];
+//        dst[0] = ofPoint(0, 0);
+//        dst[1] = ofPoint(160, 0);
+//        dst[2] = ofPoint(160, 120);
+//        dst[3] = ofPoint(0, 120);
+//
+//        reSize.warpIntoMe(init, src, dst);
+        
+        //assumes reSize is allocated to be a smaller size than init
+        reSize.scaleIntoMe(init);
         img.setFromPixels(reSize.getPixels());
         finder.findHaarObjects(img);
         nFacesPresent = finder.blobs.size();
