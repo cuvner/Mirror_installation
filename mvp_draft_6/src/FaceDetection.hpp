@@ -13,6 +13,7 @@ public:
     void installation();
     void nFacesDetected();//No. of faces detetcted at installation
     void detection(bool _drawRect);// loop over found faces and draw a square
+    void test();
     
     ofImage img;
     ofVideoGrabber videoGrabber;

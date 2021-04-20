@@ -5,6 +5,7 @@ void ofApp::setup(){
     ofBackground(0);
     if (ofGetElapsedTimeMillis()<3000) videoPlayer.video = videoPlayer.attract;
     ofSetFrameRate(30);
+    videoPlayer.video = "02.mp4";
     videoPlayer.setup();
 
     
@@ -42,7 +43,7 @@ void ofApp::installationSetup(){
     videoPlayer.draw();
     matrixResolution();
     playBackInterval();
-    attention();
+    //attention();
    
     cout << videoPlayer.vidPlayer.isPlaying()<<endl; // debug video playing bool
     
