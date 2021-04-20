@@ -17,6 +17,7 @@ class ofApp : public ofBaseApp{
     void outputData();                          // Data to help setup installation
     void playBackInterval();                    // Interval of attraction mapped to faces detected or not
     void mousePressed(int x, int y, int button);// Toggle between setup and run installation
+    void keyPressed(int key);
     // void timer();
     
    // ofImage img;

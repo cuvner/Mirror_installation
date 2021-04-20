@@ -118,3 +118,10 @@ counter ++;
 void ofApp::mousePressed(int x, int y, int button){
     debug = !debug;
 }
+void ofApp::keyPressed(int key){
+    
+    if (key == 'r'){
+    videoPlayer.video = "02.mp4";
+    videoPlayer.setup();
+    }
+}
