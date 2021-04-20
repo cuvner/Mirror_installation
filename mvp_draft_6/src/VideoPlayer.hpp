@@ -45,11 +45,15 @@ public:
     int vWidth;
     int vHeight;
     
+  
+    
     // video name strings
     string video;
     string leave;
     string attract;
     
-    // video file array - attract
-    string greet[4] = {"0", "1", "2", "3"};
+    // video file arrays
+    
+    string greet[5] = {"01", "02", "03","04", "05"};// attract
+    string repel [1] = {"10"};  //repel
 };

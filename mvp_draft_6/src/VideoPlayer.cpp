@@ -72,18 +72,18 @@ void VideoPlayer::draw(){
    
 }
 
-//--------------------------------------------------------------
+// Matrix setup--------------------------------------------------------
 void VideoPlayer::dotMatrix(){
     
-    // Matrix setup
     
-    resolution = ofMap(nFacesPresent, 0, 2, 400, 100,true);
-    spacing = ofGetWidth()/resolution;
+    
+    resolution = ofMap(nFacesPresent, 0, 5, 600, 100,true); // Map faces present tot he matrix resolution
+    spacing = ofGetWidth()/resolution;                      // the more faces the lower the resolution
     startPos = spacing/2;
-    maxSize = spacing/2;
+    maxSize = spacing/2;                                    // Size of the dots
     
     
-    ofSetColor( 255 );    //Set color for images drawing
+    ofSetColor( 255 );    //Set color for dot matrix
     
     // Put grey mask into pixel array here
     // and get video w + h
@@ -97,10 +97,10 @@ void VideoPlayer::dotMatrix(){
     ofScale(4);
     for (int i = 0; i < vidWidth; i+=spacing){
         for (int j = 0; j < vidHeight; j+=spacing){
-            
+            int startPosition = 50;
             int cWidth = (ofGetWidth()/2);
             int cHeight = (ofGetHeight()/2);
-            int locX = (i+spacing);
+            int locX = (i+spacing)+startPosition;
             int locY = j+spacing;
             ofColor c = pixels.getColor(i, j);
             

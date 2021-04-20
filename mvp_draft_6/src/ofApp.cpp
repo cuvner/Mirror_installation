@@ -2,11 +2,10 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    ofBackground(0);
-    if (ofGetElapsedTimeMillis()<3000) videoPlayer.video = videoPlayer.attract;
-    ofSetFrameRate(30);
-    videoPlayer.video = "01.mp4";
-    videoPlayer.setup();
+    ofBackground(0);// Set background
+    ofSetFrameRate(30);// Set framerate to suit Rpi4
+    videoPlayer.video = videoPlayer.greet[(int)ofRandom(4)] + ".mp4"; //Load random video file from array
+    videoPlayer.setup(); // Setup video instance
 
    
     debug = true;
@@ -15,8 +14,8 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    faceDetector.update();
-    videoPlayer.update();
+    faceDetector.update(); // Update the face detector
+    videoPlayer.update();  // Update the video player
 
     
     
@@ -41,15 +40,15 @@ void ofApp::draw(){
 void ofApp::installationSetup(){
     
     faceDetector.setupInstallation(); //face detect call drawing video
-    videoPlayer.draw();
-    matrixResolution();
-    playBackInterval();
-    attention();
+    videoPlayer.draw(); // Draw the matrix for background differencing videos
+    matrixResolution(); // Set the resolution depending on no. faces present
+    playBackInterval(); // Play back interval for video matrix depenfing on proximity to installation
+    attention();        // Function to determin to attract or repel participants
    
-    cout << videoPlayer.vidPlayer.isPlaying()<<endl; // debug video playing bool
+    //cout << videoPlayer.vidPlayer.isPlaying()<<endl; // debug video playing bool
     
-    outputData();
-    counter ++;
+    outputData();       // Output varaiables to setup installation
+    counter ++;         // Counter for modulo
 }
 
 
@@ -58,12 +57,12 @@ void ofApp::installationRun(){
     
     
     faceDetector.installation(); // face detect call without drawing video
-    videoPlayer.draw();
-    matrixResolution();
-    playBackInterval();
-    attention();
+    videoPlayer.draw(); // Draw the matrix for background differencing videos
+    matrixResolution(); // Set the resolution depending on no. faces present
+    playBackInterval(); // Play back interval for video matrix depenfing on proximity to installation
+    attention();        // Function to determin to attract or repel participants
     
-    counter ++;
+    counter ++;         // Counter for modulo
 }
 
 //Change resolution depending on faces detected ------------------
@@ -81,7 +80,7 @@ void ofApp::attention(){
     
     if (counter%interval == 0 && faceDetector.proximity < 5 && videoPlayer.vidPlayer.getIsMovieDone() ){
         modulo ++;
-        videoPlayer.video = "01.mp4";
+        videoPlayer.video = videoPlayer.greet[(int)ofRandom(4)] + ".mp4";
         videoPlayer.setup();
         
         
@@ -89,10 +88,10 @@ void ofApp::attention(){
     // cout<<videoPlayer.video<<endl; // video player debug aray
     
     // If face gets to close then shoo away
-    if (counter%80 == 50 && faceDetector.proximity > 5 && videoPlayer.vidPlayer.getIsMovieDone()) {
+    if (counter%40 == 0 && faceDetector.proximity > 5 && videoPlayer.vidPlayer.getIsMovieDone()) {
         
-        videoPlayer.video = videoPlayer.leave;
-        videoPlayer.video = "02.mp4";
+        
+        videoPlayer.video = videoPlayer.repel[0] + ".mp4";
         videoPlayer.setup();
         
     }
@@ -109,7 +108,7 @@ void ofApp::playBackInterval(){
 }
 
 
-//Output data stream--------------------------------------------
+//Output data stream for debug------------------------------------
 void ofApp::outputData(){
 ofSetHexColor(0xffffff); // reports framerate
 stringstream reportStr;
@@ -125,7 +124,7 @@ counter ++;
     }
 
 
-// Toggle between setup and Installation--------------------------------------------------------------
+// Toggle between setup and Installation----------------------------
 void ofApp::mousePressed(int x, int y, int button){
     debug = !debug;
 }
