@@ -8,7 +8,9 @@ void ofApp::setup(){
 //    videoPlayer.video = "02.mp4";
 //    videoPlayer.setup();
 
-    
+    vid.load("02.mp4");
+    vid.setLoopState(OF_LOOP_NORMAL);
+    vid.play();
     debug = true;
 }
 
@@ -17,6 +19,7 @@ void ofApp::setup(){
 void ofApp::update(){
     faceDetector.update();
     videoPlayer.update();
+    vid.update();
     
     
 }
@@ -28,6 +31,7 @@ void ofApp::draw(){
     if (debug){ // debug mode for setting up installation,
 
         installationSetup();
+        vid.draw(500,0);
     } else {
         installationRun();
 
