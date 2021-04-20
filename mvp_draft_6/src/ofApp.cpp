@@ -115,6 +115,7 @@ reportStr  << " fps: " << ofGetFrameRate() << endl
 << " video file" << videoPlayer.video<< endl
 << " resolution: " << videoPlayer.resolution << endl
 << " face size: " << faceDetector.proximity << endl
+<< " interval: " << interval << endl
 << " counter: " << counter<< endl;
 ofDrawBitmapString(reportStr.str(), 20, ofGetHeight()-100);
 counter ++;
