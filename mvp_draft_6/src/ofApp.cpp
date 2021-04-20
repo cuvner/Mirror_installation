@@ -5,8 +5,8 @@ void ofApp::setup(){
     ofBackground(0);
     if (ofGetElapsedTimeMillis()<3000) videoPlayer.video = videoPlayer.attract;
     ofSetFrameRate(30);
-    videoPlayer.video = "02.mp4";
-    videoPlayer.setup();
+//    videoPlayer.video = "02.mp4";
+//    videoPlayer.setup();
 
     
     debug = true;
@@ -43,7 +43,7 @@ void ofApp::installationSetup(){
     videoPlayer.draw();
     matrixResolution();
     playBackInterval();
-    //attention();
+    attention();
    
     cout << videoPlayer.vidPlayer.isPlaying()<<endl; // debug video playing bool
     
@@ -76,16 +76,22 @@ void ofApp::attention(){
     // Get attention when there is either no faces or a face detected at distance
     if (counter%interval == 0 && faceDetector.proximity <= 4 && !videoPlayer.vidPlayer.isPlaying()){
         //videoPlayer.video = videoPlayer.greet[(int)ofRandom(1)] + ".mp4"; // file name array
-        videoPlayer.video = "01.mp4";
-        videoPlayer.setup();
+//        videoPlayer.video = "01.mp4";
+//        videoPlayer.setup();
+        ofFill();
+        ofSetColor(0, 255, 0);
+        ofDrawCircle(400, 400, 300);
     }
     // cout<<videoPlayer.video<<endl; // video player debug aray
     
     // If face gets to close then shoo away
     if (counter%100 == 50 && faceDetector.proximity > 5 && !videoPlayer.vidPlayer.isPlaying()) {
         //videoPlayer.video = videoPlayer.leave;
-        videoPlayer.video = "02.mp4";
-        videoPlayer.setup();
+//        videoPlayer.video = "02.mp4";
+//        videoPlayer.setup();
+        ofFill();
+        ofSetColor(255,0, 0);
+        ofDrawCircle(400, 400, 300);
     }
 }
 
