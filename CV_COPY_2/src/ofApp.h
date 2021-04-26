@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxCvHaarFinder.h"
+//#include "ofxCvHaarFinder.h"
 #include "Animation1.h"
 #include "Animation2.h"
 #include "Animation3.h"
@@ -18,8 +18,8 @@ class ofApp : public ofBaseApp{
 		ofEasyCam cam;
 		ofImage img;
 		ofVideoGrabber videoGrabber;
-		ofxCvHaarFinder finder;
-		ofPixels gray;
+//        ofxCvHaarFinder finder;
+//        ofPixels gray;
 
 		Animation1 animation1;
 		Animation2 animation2;
